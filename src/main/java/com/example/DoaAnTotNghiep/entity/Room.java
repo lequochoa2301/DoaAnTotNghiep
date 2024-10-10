@@ -1,27 +1,24 @@
 package com.example.DoaAnTotNghiep.entity;
 
 import jakarta.persistence.*;
-import java.util.List;
 
 @Entity
+@Table(name = "rooms")
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int roomId;
-    private String roomType;
-    private String description;
-    private String  imageUrl;
+    private Long roomId;
+    private String roomType;//loai phong
+    private String imageUrl;
     private int capacity; // Phong chua
     private Boolean status; //Tình trạng
+    private Long price; //gia ca
 
-    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
-    private List<BookingDetail> bookingDetails;
-
-    public int getRoomId() {
+    public Long getRoomId() {
         return roomId;
     }
 
-    public void setRoomId(int roomId) {
+    public void setRoomId(Long roomId) {
         this.roomId = roomId;
     }
 
@@ -31,14 +28,6 @@ public class Room {
 
     public void setRoomType(String roomType) {
         this.roomType = roomType;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public String getImageUrl() {
@@ -65,11 +54,11 @@ public class Room {
         this.status = status;
     }
 
-    public List<BookingDetail> getBookingDetails() {
-        return bookingDetails;
+    public Long getPrice() {
+        return price;
     }
 
-    public void setBookingDetails(List<BookingDetail> bookingDetails) {
-        this.bookingDetails = bookingDetails;
+    public void setPrice(Long price) {
+        this.price = price;
     }
 }
