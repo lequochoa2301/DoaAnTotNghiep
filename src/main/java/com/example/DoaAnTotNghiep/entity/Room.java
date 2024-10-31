@@ -1,18 +1,23 @@
 package com.example.DoaAnTotNghiep.entity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "rooms")
+@Table(name = "room")
 public class Room {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long roomId;
-    private String roomType;//loai phong
-    private String imageUrl;
-    private int capacity; // Phong chua
-    private Boolean status; //Tình trạng
-    private Long price; //gia ca
+
+    private int numberOfRooms; // Số phòng
+    private String roomType; // Loại phòng
+    private int capacity; // Số người tối đa
+    private String status; // Tình trạng phòng
+    private Double price; // Giá cả
+
+    @Lob
+    private byte[] photo; // Hình ảnh
 
     public Long getRoomId() {
         return roomId;
@@ -20,6 +25,14 @@ public class Room {
 
     public void setRoomId(Long roomId) {
         this.roomId = roomId;
+    }
+
+    public int getNumberOfRooms() {
+        return numberOfRooms;
+    }
+
+    public void setNumberOfRooms(int numberOfRooms) {
+        this.numberOfRooms = numberOfRooms;
     }
 
     public String getRoomType() {
@@ -30,14 +43,6 @@ public class Room {
         this.roomType = roomType;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
     public int getCapacity() {
         return capacity;
     }
@@ -46,19 +51,27 @@ public class Room {
         this.capacity = capacity;
     }
 
-    public Boolean getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public Long getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
     }
 }
